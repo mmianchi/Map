@@ -36,7 +36,7 @@
 
 <body>
     <div id="floating-panel">
-        <input id="address" type="textbox" VALUE="Red Fort, Delhi">
+        <input id="address" type="textbox" VALUE="Tehran, Iran">
         <input id="submit" type="button" value="Geocode">
         <div id="firstComponent">
         </div>
@@ -47,17 +47,23 @@
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: { lat: -34.397, lng: 150.644 }
+                zoom: 18,
+                center: {
+                    lat: 35.726796,
+                    lng: 51.422582
+                }
             });
             var geocoder = new google.maps.Geocoder();
             document.getElementById('submit').addEventListener('click', function () {
                 geocodeAddress(geocoder, map);
             });
         }
+
         function geocodeAddress(geocoder, resultsMap) {
             var address = document.getElementById('address').value;
-            geocoder.geocode({ 'address': address }, function (results, status) {
+            geocoder.geocode({
+                'address': address
+            }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);
 
@@ -71,6 +77,5 @@
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBM857YWzkdHnLAcmD1-r7atMbLdPMmIgg&callback=initMap">
-
     </script>
 </body>
