@@ -45,14 +45,20 @@
     </div>
     <div id="map"></div>
     <script>
+
+
         function initMap() {
+            var myLatLng = {lat: -25.363, lng: 131.044}; 
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 18,
-                center: {
-                    lat: 35.726796,
-                    lng: 51.422582
-                }
+                zoom: 15,
+                center: myLatLng
             });
+
+            var marker= new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title:"home sweet home"
+            })
             var geocoder = new google.maps.Geocoder();
             document.getElementById('submit').addEventListener('click', function () {
                 geocodeAddress(geocoder, map);
